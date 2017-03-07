@@ -88,7 +88,6 @@ int replace(char policy[], int set, int E){
 }
 
 int check_hit(long address, line* l){
-	//printf("line: %d valid: %d tag: %ld\n",l->id, l->valid, l->tag);
 	int ret_value = (l->valid && (l->tag == (address & tag_mask)));
 	if(ret_value){
 		l->counter++;
@@ -101,19 +100,12 @@ int main(){
 
 	int S, E, B, m, hitTime, missPenalty;
 	char policy[4];
-	//printf("Enter the number of sets:\n"); //uncomment if input is not from file
 	scanf("%d",&S);
-	//printf("Enter lines per set\n");
 	scanf("%d",&E);
-	//printf("Enter bytes per cache block\n");
 	scanf("%d",&B);
-	//printf("Enter address size\n");
 	scanf("%d",&m);
-	//printf("Enter replacement policy as LFU or LRU\n");
 	scanf("%s",policy);
-	//printf("Enter the hitTime\n");
 	scanf("%d",&hitTime);
-	//printf("Enter the miss penalty\n");
 	scanf("%d",&missPenalty);
 	printf("\n");
 
@@ -139,9 +131,7 @@ int main(){
 	double accesses = 0;
 
 	while(1){
-		//printf("Enter a address");
 		scanf("%lx",&address);
-		//sscanf(hex,"%lx",&address);
 		if (address == -1){
 			break;
 		}
@@ -171,12 +161,7 @@ int main(){
 		}
 
 	}
-
-	/*for (int i = 0; i < S; i++){
-		for (int j = 0; j < E; j++){
-			printf("Set %d Line %d \nTag %ld valid %c counter %d age %d id %d\n",i,j,cache[i][j].tag,cache[i][j].valid,cache[i][j].counter,cache[i][j].age,cache[i][j].id);
-		}
-	}*/
+	
 	double missRate = (misses/accesses) * 100;
 	int clockCycles = missPen + hitRate;
 
